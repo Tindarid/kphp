@@ -368,7 +368,7 @@ void PHPScriptBase::run() {
     const char *msg = dl_pstr("%s%ld%sError %ld: %s.\nUnhandled Exception caught in file %s at line %ld.\n"
                               "Backtrace:\n%s",
                               engine_tag, time(nullptr), engine_pid,
-                              e->code, e->message.c_str(), e->file.c_str(), e->line,
+                              e->$code, e->$message.c_str(), e->$file.c_str(), e->$line,
                               f$Exception$$getTraceAsString(e).c_str());
     fprintf(stderr, "%s", msg);
     fprintf(stderr, "-------------------------------\n\n");

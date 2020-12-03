@@ -12,15 +12,15 @@ array<array<string>> f$debug_backtrace();
 
 
 struct C$Exception : refcountable_php_classes<C$Exception> {
-  string message;
-  int64_t code = 0;
-  string file;
-  int64_t line = 0;
+  string $message;
+  int64_t $code = 0;
+  string $file;
+  int64_t $line = 0;
   array<array<string>> trace;
 
   void accept(InstanceMemoryEstimateVisitor &visitor) {
-    visitor("", message);
-    visitor("", file);
+    visitor("", $message);
+    visitor("", $file);
     visitor("", trace);
   }
 };
@@ -57,8 +57,8 @@ Exception f$Exception$$__construct(const Exception &v$this, const string &messag
 
 template<typename T>
 T f$__exception_set_location(const T &e, const string &file, int64_t line) {
-  e->file = file;
-  e->line = line;
+  e->$file = file;
+  e->$line = line;
   return e;
 }
 
