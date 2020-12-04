@@ -6,16 +6,14 @@
 
 #include <yaml-cpp/yaml.h> // using YAML parser to handle JSON files
 
-#include "compiler/kphp_assert.h"
 #include "common/wrappers/fmt_format.h"
+#include "compiler/kphp_assert.h"
 #include "compiler/stage.h"
 
 std::string ComposerClassLoader::psr4_lookup_nocache(const std::string &class_name) const {
   std::string prefix = class_name;
 
-  auto file_exists = [](const std::string &filename) {
-    return access(filename.c_str(), F_OK) == 0;
-  };
+  auto file_exists = [](const std::string &filename) { return access(filename.c_str(), F_OK) == 0; };
 
   // we start from a longest prefix and then try to match it
   // against the psr4 map; if there is no match, the last prefix

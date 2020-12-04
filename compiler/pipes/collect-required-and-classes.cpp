@@ -5,7 +5,6 @@
 #include "compiler/pipes/collect-required-and-classes.h"
 
 #include "common/wrappers/likely.h"
-#include "common/algorithms/contains.h"
 
 #include "compiler/compiler-core.h"
 #include "compiler/data/class-data.h"
@@ -145,7 +144,7 @@ private:
   static bool is_composer_autoload(const std::string &name) {
     // fast path: it there is no "/autoload.php", then we don't
     // need to bother and expand the filename
-    if (!vk::contains(name, "/autoload.php")) {
+    if (!vk::ends_with(name, "/autoload.php")) {
       return false;
     }
     auto full_name = G->search_required_file(name);
